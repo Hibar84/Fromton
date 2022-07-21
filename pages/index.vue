@@ -1,5 +1,4 @@
 <template>
-  <CheeseCard/>
 </template>
 
 <script lang="ts">
