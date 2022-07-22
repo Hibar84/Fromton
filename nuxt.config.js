@@ -1,4 +1,6 @@
-export default {
+import { defineNuxtConfig } from 'nuxt'
+
+export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -37,6 +39,11 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // Firebase
+    '@nuxtjs/firebase',
+    // Pinia
+    '@nuxtjs/composition-api/module',
+    '@pinia/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -45,13 +52,32 @@ export default {
     baseURL: '/',
   },
 
+
+  // Firebase configuration
+  firebase: {
+    config:{
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: "cheese-84me216.firebaseapp.com",
+      databaseURL: "https://cheese-84me216-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "cheese-84me216",
+      storageBucket: "cheese-84me216.appspot.com",
+      messagingSenderId: "314295880760",
+      appId: "1:314295880760:web:1d8fe2e6ae1720bc94aacd",
+      measurementId: "G-3FCDQKVRXK"
+    },
+    services: {
+      auth: true,
+      firestore : true
+    }
+  },
+
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'fr',
-    },
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-}
+})
